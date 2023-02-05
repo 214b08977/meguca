@@ -32,6 +32,12 @@ function handleShortcut(event: KeyboardEvent) {
 		}
 	}
 
+	if (!anyModifier && inInput && event.key === "Enter") {
+		caught = true
+		postSM.feed(postEvent.done)
+		caught = false
+	}
+
 	if (event.altKey && !altGr) {
 		caught = true
 
@@ -43,9 +49,9 @@ function handleShortcut(event: KeyboardEvent) {
 					expandThreadForm()
 				}
 				break
-			case options.done:
-				postSM.feed(postEvent.done)
-				break
+			//case options.done:
+			//	postSM.feed(postEvent.done)
+			//	break
 			case options.toggleSpoiler:
 				const m = trigger("getPostModel") as FormModel
 				if (m) {
@@ -70,6 +76,7 @@ function handleShortcut(event: KeyboardEvent) {
 			default:
 				caught = false
 		}
+
 
 	}
 
