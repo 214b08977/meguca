@@ -1,7 +1,7 @@
 version: "3"
 services:
   meguca:
-    build: .
+    image: docker pull ghcr.io/214b08977/meguca:master
     restart: always
     ports:
       - "8000:8000"

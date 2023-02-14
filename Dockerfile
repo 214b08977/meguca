@@ -66,3 +66,5 @@ RUN sed -i 's/127\.0\.0\.1:8000/:8000/' config.json
 
 RUN make server
 RUN make client
+RUN go clean
+RUN rm -rf /src/FFmpeg
