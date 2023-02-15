@@ -1,12 +1,21 @@
-name: Run tests
-on: [push, pull_request]
+name: Build Meguca
+on: [push]
 
 jobs:
-  test:
-    name: Run tests
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout commit
         uses: actions/checkout@v2
-      - name: Run tests
-        run: make test_docker
+      - name: Build
+        run: make
+      - name: Upload server artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: meguca
+          path: ./meguca
+      - name: Upload frontend artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: frontend
+          path: www
