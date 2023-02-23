@@ -7,6 +7,18 @@ jobs:
     steps:
       - name: Checkout commit
         uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          apt-get update
+          apt-get install -y \
+            build-essential \
+            pkg-config \
+            libpth-dev \
+            libwebp-dev \
+            libopencv-dev \
+            libgeoip-dev geoip-database \
+            python3 python3-requests \
+            git lsb-release wget curl netcat postgresql-client gzip
       - name: Build
         run: make
       - name: Upload server artifact
